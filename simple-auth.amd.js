@@ -1552,6 +1552,11 @@ define("simple-auth/utils/objects-are-equal",
         if (a[property] === b[property]) {
           continue;
         }
+	if(Ember.typeOf(a[property]) === 'array') {
+		if( a[property].join(',') === b[property].join(',') ) {
+			continue;
+		}
+	}
         if (Ember.typeOf(a[property]) !== 'object') {
           return false;
         }
